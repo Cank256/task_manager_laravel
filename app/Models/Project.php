@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+    ];
+
+    // Define any relationships here, e.g., tasks
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }
+
