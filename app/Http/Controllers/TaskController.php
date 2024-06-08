@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+    public function index(Project $project)
+    {
+        $tasks = $project->tasks()->orderBy('priority')->get();
+        return view('tasks.index', compact('project', 'tasks'));
+    }
+
     /**
      * Show the form for creating a new task.
      *
@@ -104,17 +110,13 @@ class TaskController extends Controller
      */
     public function reorder(Request $request, Project $project)
     {
-        // Get the new order of tasks from the request
         $tasks = $request->tasks;
-
-        // Update the priority of each task based on the new order
         foreach ($tasks as $index => $taskId) {
             $task = Task::find($taskId);
             $task->priority = $index + 1;
             $task->save();
         }
 
-        // Return a JSON response indicating success
         return response()->json(['status' => 'success']);
     }
 }
