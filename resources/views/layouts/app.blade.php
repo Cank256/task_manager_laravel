@@ -6,6 +6,7 @@
     <title>Task Manager</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    @vite('resources/js/app.js')
 </head>
 <body>
     <div id="app">
